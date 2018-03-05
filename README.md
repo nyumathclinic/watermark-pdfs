@@ -1,1 +1,1 @@
-# watermark-pdfs
+Sort and watermark PDFs exported by GradeScope
