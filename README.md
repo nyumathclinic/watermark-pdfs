@@ -43,6 +43,6 @@ You will need to download submissions from a (presumably graded) Gradescope assi
 
 Change into that directory and run:
 
-$ python path/to/script 
+    $ python path/to/script 
 
 If all goes well, you'll get a directory for each student, with their watermarked PDF therein.
