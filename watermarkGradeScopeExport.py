@@ -4,6 +4,7 @@ from reportlab.pdfgen import canvas
 from nameparser import HumanName
 import yaml
 import os
+import re
 
 #this function takes a pdf file 'fileToMark' (location) and watermarks each page
 #with the given string 'textToMark'; it also accepts an auxillary string 'sid'
@@ -53,7 +54,22 @@ def watermarkPDF(fileToMark,textToMark,sid):
     output.write(outputStream) 
     outputStream.close()
 
+def submitter_netid(submitter):
+    """Get the NetID of the submitter record.
 
+    Sometimes we populate the Gradescope records by putting the NetID in the
+    `sid` or Student ID field.  Other times we put the NYU N Number in the 
+    `sid` field and NetID in the email address (with `@nyu.edu` appended).
+    This function tries both.
+    """
+    netid_pattern = re.compile('[a-z]{1,4}[0-9]{1,5}')
+    match = netid_pattern.search(submitter[':sid'])
+    if match:
+        return match.group(0)
+    match = netid_pattern.search(submitter[':email'])
+    if match:
+        return match.group(0)
+    raise ValueError("Could not find email address: %s" % submitter )
 
 #read in the GradeScope metadata for all of the submissions
 #as a python dictionary
@@ -65,9 +81,7 @@ for item in submissions:
     submissionii = submissioni[':submitters'] #dictionary for that specific submission
     studentName = submissionii[0][':name'] #student name for that submission
     sid = submissionii[0][':sid'] #studentID for that submission
-    #print sid
-    netid, domain = submissionii[0][':email'].split('@')
-
+    netid = submitter_netid(submissionii[0])
     #change studentName to "Last, First Middle" because GradeScope does "First Middle Last"
     temp = HumanName(studentName) #this is a smart parser
     studentName = temp.last+", "+temp.first
