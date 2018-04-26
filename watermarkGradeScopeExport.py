@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 #need to install PyYaml, pyPDF, Reportlab.pdfgen, nameparser
 from PyPDF2 import PdfFileWriter, PdfFileReader 
 from reportlab.pdfgen import canvas
