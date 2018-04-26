@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pdf = "*"
+PyPDF2 = "*"
+Reportlab = "*"
+nameparser = "*"
+PyYaml = "*"
+pyyaml = "*"
+"e1839a8" = {path = ".", editable = true}
+
+[dev-packages]
+"e1839a8" = {path = ".", editable = true}
+
+[requires]
+python_version = "3.6"
