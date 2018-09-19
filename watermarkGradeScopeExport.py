@@ -145,4 +145,4 @@ for item in submissions:
             file_path = file_path+"Feedback Attachment(s)/"
             
         # send pdf to be renamed, watermarked, and stored in new directory
-        update_PDF(pdf_file,netid+extension,file_path,student_name)
+        update_PDF(pdf_file,netid+extension,file_path,text_to_mark)
