@@ -138,8 +138,6 @@ for item in submissions:
         text_to_mark = ""
         if(watermark!=0):
             text_to_mark = student_name;
-        else:
-            text_to_mark = student_name
         
         # set the folder structure
         file_path = "./upload/"+netid+"/"
