@@ -23,7 +23,7 @@ Someday: package the script with an installer that does this automatically.
 
     $ pip install PyYaml
     $ pip install pdf
-    $ pip install pyPDF
+    $ pip install pyPDF2
     $ pip install Reportlab
     $ pip install nameparser
     
