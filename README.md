@@ -35,13 +35,13 @@ Download the python script.  Or, you can clone the full github repository.
 
 Near the top of the script, there are 4 variables/flags you can adjust: extension, watermark, sakai_assignment, and keep_grade_report.
 
-'extension' is a string that will be appended to the resultant PDF file in the format: netid+extension+".pdf".
+`extension` is a string that will be appended to the resultant PDF file in the format: `netid+extension+".pdf"`.
 
-If watermark == 0, no watermark will be applied. If watermark = 1, a watermark of the student's name will be applied to every page of the PDF.
+If `watermark = 0`, no watermark will be applied. If `watermark = 1`, a watermark of the student's name will be applied to every page of the PDF.
 
-If sakai_assignment == 0, then the submissionsw will be organized as: ./upload/netid/netid+extension.pdf. If sake_assignment == 1, then the submissions will be organized as: ./upload/netid/Feedback Attachment(s)/netid_extension.pdf. Use the former if transferring to Sakai using the WebDAV protocal. Use the latter if you are uploading the the assignments through Sakai's assignment portal.
+If `sakai_assignment = 0`, then the submissions will be organized as: `./upload/netid/netid+extension.pdf`. If `sake_assignment = 1`, then the submissions will be organized as: `./upload/netid/Feedback Attachment(s)/netid_extension.pdf`. Use the former if transferring to Sakai using the WebDAV protocol. Use the latter if you are uploading the the assignments through Sakai's assignment portal.
 
-If keep_grade_report == 0, then the first page of the pdf will be purged, which is usually the GradeScope grade report. Keep in mind, if the grade report is more than one page long, only the first page will be purged. If keep_grade_report == 1, then the first page will not be purged.    
+If `keep_grade_report = 0`, then the first page of the pdf will be purged, which is usually the GradeScope grade report. Keep in mind, if the grade report is more than one page long, only the first page will be purged. If `keep_grade_report = 1`, then the first page will not be purged.    
 
 # Usage
 
