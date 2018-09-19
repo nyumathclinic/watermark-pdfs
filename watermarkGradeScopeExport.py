@@ -31,8 +31,8 @@ keep_grade_report = 1 # if true, keep the grade report; else purges ONLY THE FIR
 
 
 
-def update_PDF(pdf_file,new_name,watermark_text):
-    """Receive a pdf_file, rename to new_name, and watermark with water_mark_text
+def update_PDF(pdf_file,new_name,path,watermark_text):
+    """Receive a pdf_file, rename to new_name, store in path, and watermark with water_mark_text
     """
     
     # use reportlab to create a PDF that will be used 
@@ -68,9 +68,6 @@ def update_PDF(pdf_file,new_name,watermark_text):
         output.addPage(page_i) # add watermarked page_i to the output pdf
 
     # write the output of our new, watermarked PDF to the given given file name
-    path = "./upload/"+sid+"/"
-    if(sakai_assignment!=0):
-        path=path+"Feedback Attachment(s)/"
     if not os.path.exists(path):
         os.makedirs(path)
     outputStream = open(path+new_name+".pdf", "wb") 
@@ -137,8 +134,17 @@ for item in submissions:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow({'ID': netid, 'grade': score}) # write student score to grades.csv
    
-        # produce a new watermarked pdf file with a new name in a new folder structure;
-        if(watermark==0):
-            update_PDF(pdf_file,netid+extension,"")
+        # this is the watermark text
+        text_to_mark = ""
+        if(watermark!=0):
+            text_to_mark = student_name;
         else:
-            update_PDF(pdf_file,netid+extension,student_name)
+            text_to_mark = student_name
+        
+        # set the folder structure
+        file_path = "./upload/"+netid+"/"
+        if(sakai_assignment!=0):
+            file_path = file_path+"Feedback Attachment(s)/"
+            
+        # send pdf to be renamed, watermarked, and stored in new directory
+        update_PDF(pdf_file,netid+extension,file_path,student_name)
