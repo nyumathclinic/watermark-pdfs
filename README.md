@@ -21,7 +21,7 @@ python library.
 
 Someday: package the script with an installer that does this automatically.
 
-    $ pip install PyYaml
+    $ pip install PyYaml==3.12
     $ pip install pdf
     $ pip install pyPDF2
     $ pip install Reportlab
